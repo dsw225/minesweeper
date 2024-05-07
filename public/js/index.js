@@ -47,7 +47,6 @@ function displayBoard(board) {
             if (board[i][j].revealed) {
                 cell.classList.add("revealed");
                 if (board[i][j].isMine) {
-                    revealAllMines(board);
                     cell.classList.add("mine");
                     cell.textContent = "💣";
                 } else if (board[i][j].count > 0) {
@@ -74,13 +73,9 @@ function displayBoard(board) {
                             cell.style.color = "black";
                             break;
                         case 8:
-                            cell.style.color = "grey";
-                            break;
-                        case 9:
-                            cell.style.color = "blueviolet"; //If by somehow this happens 
+                            cell.style.color = "grey"; //If by somehow this happens 
                             break;
                     }
-
                     cell.textContent = board[i][j].count;
                 }
             }
@@ -101,7 +96,7 @@ function displayBoard(board) {
     }
 }
 
-function revealAllMines(board) {
+function revealAllMines() {
     for (let i = 0; i < dimensionsX; i++) {
         for (let j = 0; j < dimensionsY; j++) {
             if (board[i][j].isMine) {
@@ -171,6 +166,7 @@ function showTile(board, row, col) {
         alert( //Change Later
             "Game Over! You stepped on a mine."
         );
+        revealAllMines();
     } else if (board[row][col].count === 0) {
         // If cell has no mines nearby, reveal adjacent cells
         for (let nextX = -1; nextX <= 1; nextX++) {
@@ -195,12 +191,4 @@ function markTile(board, row, col) {
         totalMarked++;
     }
     displayBoard(board);
-}
-
-function listMinesLeft() {
-}
-
-function checkGameEnd() {
-    const win = checkWin(board);
-    const lose = checkLose(board);
 }
