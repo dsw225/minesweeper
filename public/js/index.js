@@ -108,6 +108,7 @@ function revealAllMines() {
 function createBoard(dimensionsX, dimensionsY, numberOMines) {
     totalMarked = 0;
     seconds = 0;
+    stopTimer();
     document.getElementById('timer').innerText = '0 Seconds';
     console.log("Created board successfully");
     let board = []
