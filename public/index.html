@@ -37,12 +37,19 @@
             </div>
             <button type="button" id="submit">Create</button>
           </form> 
+          <div id="modes"><span style="color:blue">Beginner: 10X10, 10 Mines</span> <span style="color:green">Intermediate: 16X16, 40 Mines</span> <span style="color:red">Expert: 30X16, 99 Mines</span></div>
+    </div>
+    
+    <div class="subtext">
+        <div id="mine-on-left">
+        🚩 Left: <span mines-left></span>
+        </div>
+        <div id="timer-on-right">
+            <div id="timer">0 Seconds</div>
+        </div>
+        <br></br>
     </div>
     <div id="mineArea">
-        <div class="subtext">
-            🚩 Left: <span mines-left></span>
-            <br></br>
-        </div>
         <div id="minefield">
             <!-- Insert grid here -->
         </div>

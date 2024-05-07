@@ -1,15 +1,15 @@
-//Display
 
-// Populate board with mines/tiles
-// Click on Tiles
-//Reveal
-//Right click on tiles to mark
-//Check for Win
-
+//Board nums
 let dimensionsX = 14;
 let dimensionsY = 18;
 let numMines = 40;
 let totalMarked = 0;
+
+//Timer Nums
+let timerInterval;
+let seconds = 0;
+let isRunning = false;
+
 let board = createBoard(dimensionsX, dimensionsY, numMines);
 
 const minefield = document.getElementById("minefield");
@@ -25,7 +25,6 @@ function initializeBoard() {
         displayBoard(board);
     });
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
     initializeBoard();
@@ -108,7 +107,9 @@ function revealAllMines() {
 
 function createBoard(dimensionsX, dimensionsY, numberOMines) {
     totalMarked = 0;
-    console.log("create board ran");
+    seconds = 0;
+    document.getElementById('timer').innerText = '0 Seconds';
+    console.log("Created board successfully");
     let board = []
     for (let i = 0; i < dimensionsX; i++) {
         board[i] = [];
@@ -154,6 +155,10 @@ function createBoard(dimensionsX, dimensionsY, numberOMines) {
 }
 
 function showTile(board, row, col) {
+    if (!isRunning) {
+        startTimer();
+    }
+
     if (row < 0 || row >= dimensionsX || col < 0 || col >= dimensionsY || board[row][col].revealed) {
         return;
     }
@@ -164,9 +169,10 @@ function showTile(board, row, col) {
     }
     if (board[row][col].isMine) {
         alert( //Change Later
-            "Game Over! You stepped on a mine."
+            "Game Over! You stepped on a mine after " + seconds + " seconds."
         );
         revealAllMines();
+        stopTimer();
     } else if (board[row][col].count === 0) {
         // If cell has no mines nearby, reveal adjacent cells
         for (let nextX = -1; nextX <= 1; nextX++) {
@@ -176,6 +182,11 @@ function showTile(board, row, col) {
         }
     }
     displayBoard(board);
+
+    if (checkForWin(board)) {
+        alert("Congratulations! You've won the game after " + seconds + " seconds!");
+        stopTimer();
+    }
 }
 
 function markTile(board, row, col) {
@@ -191,4 +202,35 @@ function markTile(board, row, col) {
         totalMarked++;
     }
     displayBoard(board);
+}
+
+function startTimer() {
+    if (!isRunning) {
+        timerInterval = setInterval(updateTimer, 1000);
+        isRunning = true;
+    }
+}
+
+function updateTimer() {
+    seconds++;
+    document.getElementById('timer').innerText = seconds + ' Seconds';
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+    isRunning = false;
+}
+
+function checkForWin(board) {
+    for (let i = 0; i < dimensionsX; i++) {
+        for (let j = 0; j < dimensionsY; j++) {
+            if (!board[i][j].isMine && !board[i][j].revealed) {
+                return false;
+            }
+            if (board[i][j].isMine && !board[i][j].marked) {
+                return false;
+            }
+        }
+    }
+    return true;
 }

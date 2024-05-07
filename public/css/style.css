@@ -2,7 +2,7 @@
     --color-theme: #4bc3B5;
     --text-dark: #010402;
     --pages-width: calc(50vw);
-    --cell-width: calc(2vw);
+    --cell-width: calc(3vh);
 }
 
 @font-face {
@@ -13,7 +13,6 @@
 body{
     background-color: var(--color-theme);
     font-family: 'Gotham-Book', sans-serif;
-    max-width: var(--pages-width);
     margin:auto;
     min-height: 100vh;
 }
@@ -32,6 +31,12 @@ input:hover{
     background-color: #00000021;
 }
 
+#modes{
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
 #submit{
     width: auto;
     background-color: var(--color-theme);
@@ -40,6 +45,7 @@ input:hover{
     border: 2px solid var(--text-dark); /* Green */
     padding: 15px 32px;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 #submit:hover{
     background-color: #00000021;
@@ -101,4 +107,19 @@ input:hover{
 }
 .marked {
     color: red;
+}
+
+.subtext {
+    display: flex;
+    justify-content: center;
+}
+
+#mine-on-left {
+    text-align: left;
+    padding-right: 125px; /* Dumb but it works and i'm tired */
+}
+
+#timer-on-right {
+    text-align: right;
+    padding-left: 125px;
 }
