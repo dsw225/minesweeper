@@ -228,9 +228,6 @@ function checkForWin(board) {
             if (!board[i][j].isMine && !board[i][j].revealed) {
                 return false;
             }
-            if (board[i][j].isMine && !board[i][j].marked) {
-                return false;
-            }
         }
     }
     return true;
