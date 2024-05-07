@@ -1,0 +1,104 @@
+:root {
+    --color-theme: #4bc3B5;
+    --text-dark: #010402;
+    --pages-width: calc(50vw);
+    --cell-width: calc(2vw);
+}
+
+@font-face {
+    font-family: 'Gotham-Book';
+    src: url('../fonts/Gotham-Book.otf') format('opentype'); /* https://css-tricks.com/snippets/css/using-font-face-in-css/ */
+}
+
+body{
+    background-color: var(--color-theme);
+    font-family: 'Gotham-Book', sans-serif;
+    max-width: var(--pages-width);
+    margin:auto;
+    min-height: 100vh;
+}
+
+input{
+    font-family: 'Gotham-Book', sans-serif;
+    text-align: center;
+    width: 30px;
+    background-color: var(--color-theme);
+    border-radius: 4px;
+    border: 2px solid var(--text-dark); /* Green */
+    padding: 15px;
+    margin-bottom: 25px;
+}
+input:hover{
+    background-color: #00000021;
+}
+
+#submit{
+    width: auto;
+    background-color: var(--color-theme);
+    font-family: 'Gotham-Book', sans-serif;
+    border-radius: 4px;
+    border: 2px solid var(--text-dark); /* Green */
+    padding: 15px 32px;
+    margin-bottom: 25px;
+}
+#submit:hover{
+    background-color: #00000021;
+}
+
+#sweeper-settings{
+    text-align: center;
+}
+
+#mineArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+#minefield{
+    display: inline-block;
+    outline: 2px solid var(--text-dark);
+}
+
+.top-nav{
+    display: inline-block;
+    padding: 2vw;
+}
+
+.cell {
+    width: var(--cell-width);
+    height: var(--cell-width);
+    border: 1px solid #ccc;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-size: calc(var(--cell-width)*.8);
+    cursor: pointer;
+ 
+    /* Default color for unrevealed tiles */
+    background-color: #eee;
+ 
+    /* Default color for unrevealed tile text */
+    color: #333;
+}
+.cell:hover{
+    background-color: #fdfde8;
+}
+
+.revealed {
+    cursor:default;
+    background-color: #ccc;
+    color: #000;
+}
+.revealed:hover{
+    background-color: #ccc;
+}
+
+.mine {
+    background-color: #ff3333;
+}
+.marked {
+    color: red;
+}

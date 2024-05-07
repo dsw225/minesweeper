@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="">
+
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <div>
+        <form id="sweeper-settings">
+            <div class="top-nav">
+                <label>Dimensions</label>
+                <br></br>
+                <input type="text" id="y-dimension" name="y-dimension" value="18"> <!--Flipped x and y here cause it was easier than redoing everything-->
+                <label>X</label>
+                <input type="text" id="x-dimension" name="x-dimension" value="14">
+            </div>
+            <div class="top-nav">
+                <label>Total Mines</label>
+                <br></br>
+                <input type="text" id="mines" name="mines" value="40">
+            </div>
+            <button type="button" id="submit">Create</button>
+          </form> 
+    </div>
+    <div id="mineArea">
+        <div class="subtext">
+            🚩 Left: <span mines-left></span>
+            <br></br>
+        </div>
+        <div id="minefield">
+            <!-- Insert grid here -->
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
